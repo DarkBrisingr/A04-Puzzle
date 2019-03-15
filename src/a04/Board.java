@@ -140,7 +140,7 @@ public class Board {
 				if (this.blocks[i][j] != that.blocks[i][j])	{return false;}	//so we return false
 			}
 		}
-		return true;														//if none of this returns, then they're equal
+		return true;				//if none of this returns, then they're equal
 	}
 	
 	/**
