@@ -60,7 +60,10 @@ public class Solver {
 	 * @return
 	 */
 	public int moves() {
-		return -1; //TODO
+		if (!isSolvable())  
+			return -1;
+        	else                  
+			return goal.moves;
 	}
 	
 	/**
@@ -68,10 +71,12 @@ public class Solver {
 	 * @return
 	 */
 	public Iterable<Board> solution() {
-		
-		//if (isSolvable()) 
-		
-		return null; //TODO
+        	if (!isSolvable())  
+			return null;
+        	Stack<Board> s = new Stack<Board>();
+       	 	for (SearchNode n = goal; n != null; n = n.prev) 
+            		s.push(n.board);
+       		return s;
 	}
 	
 	/**
