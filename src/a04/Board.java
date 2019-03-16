@@ -138,7 +138,7 @@ public class Board {
 		int blankRow = rowOfBlankBlock();										//assigns blankRow and blankColumn so it doesn't have to 
 		int blankColumn = columnOfBlankBlock();										//iterate over those methods more than once
 		
-		if (blankRow > 0) {			neighBoard.enqueue(new Board(topNeighbor(blankRow, blankColumn)));}	//if the blank block is not the first row, enqueue the top neighbor
+		if (blankRow > 0) {		neighBoard.enqueue(new Board(topNeighbor(blankRow, blankColumn)));}		//if the blank block is not the first row, enqueue the top neighbor
 		if (blankRow < size) {		neighBoard.enqueue(new Board(bottomNeighbor(blankRow, blankColumn)));}		//if the blank block is not the last row, enqueue the bottom neighbor
 		if (blankColumn > 0) {		neighBoard.enqueue(new Board(leftNeighbor(blankRow, blankColumn)));}		//if the blank block is not the first column, enqueue the left neighbor
 		if (blankColumn < size) {	neighBoard.enqueue(new Board(rightNeighbor(blankRow, blankColumn)));}		//if the blank block is not the last column, enqueue the right neighbor
@@ -261,11 +261,11 @@ public class Board {
 	private int rowOfBlankBlock() {							//BIG O OF rowOfBlankBlock() == (O)N^2
 		for (int i = 0; i < size; i++) {					//the row of the blocks
 			for (int j = 0; j < size; j++) {				//the column of the blocks
-				if (blocks[i][j] == 0)						//iterates through each block to find the blank one
-					{return i;}								//returns the row that has the blank block
+				if (blocks[i][j] == 0)					//iterates through each block to find the blank one
+					{return i;}					//returns the row that has the blank block
 			}
 		}
-		return -1;											//if it cannot find the blank block, it returns -1	(should never occur)	
+		return -1;								//if it cannot find the blank block, it returns -1	(should never occur)	
 	}
 	/**
 	 * detects which column the blank block is in
@@ -274,10 +274,10 @@ public class Board {
 	private int columnOfBlankBlock() {						//BIG O OF rowOfBlankBlock() == (O)N^2
 		for (int i = 0; i < size; i++) {					//the row of the blocks
 			for (int j = 0; j < size; j++) {				//the column of the blocks
-				if (blocks[i][j] == 0)						//iterates through each block to find the blank one
-					{return j;}								//returns the row that has the blank block
+				if (blocks[i][j] == 0)					//iterates through each block to find the blank one
+					{return j;}					//returns the row that has the blank block
 			}
 		}
-		return -1;											//if it cannot find the blank block, it returns -1	(should never occur)	
+		return -1;								//if it cannot find the blank block, it returns -1	(should never occur)	
 	}
 }
