@@ -1,17 +1,58 @@
 package a04;
 
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.StdOut;
 
 public class Solver {
+	//initializing global variable
+	private Board initial;
+	private Board goal;
+	private int size;
+	private MinPQ<SearchNode> minpq;
 	
+	private class SearchNode implements Comparable<SearchNode>{
+		private int moves;
+		private Board board;
+		private SearchNode prevNode;
+		
+		public SearchNode(Board board, SearchNode prevNode) {
+			this.board = board;
+			if (prevNode != null) {
+				this.moves = prevNode.moves++;
+				this.prevNode = prevNode;
+			}
+			else {
+				moves = 0;
+			}
+		}
+		
+		@Override
+		public int compareTo(SearchNode other) {
+			int thisPriority = this.board.manhattan() + this.moves;
+			int otherPriority = other.board.manhattan() + other.moves;
+			
+			return (thisPriority - otherPriority);
+		}
+	}
 	
 /**
  * find a solution to the initial board (using the A* algorithm)
  * @param initial
  */
 	public Solver(Board initial) {
+		//throws arguments if it is not solvable or a null
+		if (!initial.isSolvable()) { throw new IllegalArgumentException("Board is not solvable"); }
+		if (initial == null) { throw new NullPointerException("Board is null"); }
 		
+		//initialing local variables to global variables
+		this.initial = initial;
+		size = initial.size();
+		minpq = new MinPQ<SearchNode>();
+		
+		if (initial.isGoal()) {
+
+		}
 	}
 	
 	/**
@@ -19,8 +60,7 @@ public class Solver {
 	 * @return
 	 */
 	public int moves() {
-		//if (isSolvable()) return  TODO
-		return -1;
+		return -1; //TODO
 	}
 	
 	/**
@@ -29,9 +69,9 @@ public class Solver {
 	 */
 	public Iterable<Board> solution() {
 		
-		//if (isSolvable()) return  TODO 
+		//if (isSolvable()) 
 		
-		return null;
+		return null; //TODO
 	}
 	
 	/**
